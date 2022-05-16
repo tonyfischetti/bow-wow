@@ -1,0 +1,16 @@
+{
+  "name": "bow-wow",
+  "version": "1.0.0",
+  "description": "A quick demonstration of an ETL pipeline",
+  "author": "Tony Fischetti <tony.fischetti@gmail.com>",
+  "license": "GPL-3",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "cheerio": "^1.0.0-rc.10",
+    "gulp": "^4.0.2",
+    "md5": "^2.3.0",
+    "ora-promise": "^1.0.0",
+    "shelljs": "^0.8.5"
+  }
+}
