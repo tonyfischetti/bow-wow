@@ -48,7 +48,8 @@ dogs[, LicenseIssuedDate:=NULL]
 # 2014 and 2021 are incomplete, so we'll exclude those
 dogs[, .(licenses_issued=.N), year(issued_date)][
   order(year)][
-  year <= 2020 & year >= 2015] %>% fwrite("./target/dog-licenses-by-year.csv")
+  year <= 2020 & year >= 2015] %>%
+    fwrite("./target/dog-licenses-by-year.csv")
 
 
 
@@ -75,7 +76,7 @@ dogs[breed!="Unknown" & !is.na(boro)][
 # the Bronx, Dalmatians would be ~"Bronx's signature breed"
 
 # Statistically speaking, each Borough's "breed" would be the breed
-# with the highest residuals in a Chi-Square test of independence
+# with the highest (positive) residuals in a Chi-Square test of independence
 # of proportions between that Borough and all other Borough's
 
 
@@ -112,12 +113,14 @@ get_top_dog <- function(DT, targetboro){
 
 # let's turn off warnings as errors (chisq is inexact test)
 options(warn=1)
-get_top_dog(dogs, "Bronx")
-get_top_dog(dogs, "Staten Island")
-get_top_dog(dogs, "Manhattan")
-get_top_dog(dogs, "Brooklyn")
-get_top_dog(dogs, "Queens")
 
+# get_top_dog(dogs, "Bronx")
+# get_top_dog(dogs, "Staten Island")
+# get_top_dog(dogs, "Manhattan")
+# get_top_dog(dogs, "Brooklyn")
+# get_top_dog(dogs, "Queens")
+
+# run it for all boroughs and output the combined results
 list("Bronx", "Manhattan", "Staten Island", "Queens", "Brooklyn") %>%
   lapply(function(x){ data.table(boro=x, signature_breed=get_top_dog(dogs, x)) }) %>%
   rbindlist %>%

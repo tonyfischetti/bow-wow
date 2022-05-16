@@ -10,7 +10,7 @@
 ***
 
 - [quickstart](#quickstart)
-- [just the results, please](just-the-results-please)
+- [just the results, please](#just-the-results-please)
 - [tell me more](#tell-me-more)
 - [tech stack choice](#tech-stack-choice)
 - [limitations](#limitations)
@@ -19,9 +19,8 @@
 
 ## quickstart
 
-To run this, you need to have Node.js; R, and the R package `packrat`.
-
-TODO: POSIX?!
+To run this, you need to have Node.js; R, and the R package `packrat`. The
+host machine (probably) has to be POSIX compliant.
 
 Assuming you already have Node.js and R installed, installing `packrat`
 is as easy as opening R and running
@@ -156,7 +155,7 @@ As I understand it, these are popular node libraries.
    a tightly-controlled vocabulary. For example, Pit-bulls (this author's
    favorite breed) are referred to by _at least_ 6 different names in the
    data. Though in this particular instance its probably due to attempts
-   to subvert breed-specific rules/legislation, the problem extent to
+   to subvert breed-specific rules/legislation, the problem extends to
    pretty much all of the most popular breeds.
 
 2. Node.js is very new to me, so I don't know whether the fact that there
