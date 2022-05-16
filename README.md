@@ -92,7 +92,7 @@ Statistically speaking, each borough's "breed" would be the breed
 with the highest (positive) residuals in a Chi-Square test of independence
 of proportions between that borough and all others.
 
-Anyway, I noticed that the ZipCodes in the Open data wesen't reliable, so
+Anyway, I noticed that the ZipCodes in the Open data weren't reliable, so
 I added another (unauthorized) data source from nycbynatives.com that
 maps zipcodes to boroughs.
 
