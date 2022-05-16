@@ -80,7 +80,7 @@ on the data until I thought of getting each borough's "signature dog breed"
 or, rather, each borough's 'most uniquely popular dog breed'.
 Each borough's "most uniquely popular" dog breed _isn't_ (necessarily) the
 borough's most popular dog breed (after all, Yorkshire Terrier is the most
-popular breed in _all_ borough's, save for Staten Island). Instead, the spot
+popular breed in _all_ boroughs, save for Staten Island). Instead, the spot
 goes to the breed that is the most popular compared to base-popularity of dog
 breeds in all other borough's.
 
