@@ -114,7 +114,7 @@ that's a little closer to that of the NYPL Digital department, and with a
 particular emphasis on ease-of-reproducibility.
 
 As mentioned before, if I had more time, I'd probably use Docker to take
-care off all that stuff at the OS-level, but I decided that approach that
+care off all that stuff at the OS-level, but I decided that an approach that
 uses [gulp](https://gulpjs.com/) as a workflow automation tool is also
 a viable choice for this project.
 
@@ -152,7 +152,7 @@ As I understand it, these are popular node libraries.
    before this is considered a "production-ready" analysis.
 
    Just as one example, the breed names used do not appear to come from
-   a tightly-controlled vocabulary. For example, Pit-bulls (this author's
+   a tightly-controlled vocabulary. For example, Pitbulls (this author's
    favorite breed) are referred to by _at least_ 6 different names in the
    data. Though in this particular instance its probably due to attempts
    to subvert breed-specific rules/legislation, the problem extends to
