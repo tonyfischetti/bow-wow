@@ -1,12 +1,18 @@
 # bow-wow
 
-A quick demonstration of an ETL pipeline
-
-![keith haring dog barking](https://personal.thepolygram.com/haring-dog.svg | width=200)
-
 <img src="https://personal.thepolygram.com/haring-dog.svg"
      alt="keith haring dog barking"
-     width="300"/>
+     width="200"/>
+
+A quick demonstration of an ETL pipeline
+
+
+### how-to
+
+To run this...
+
+
+
 
 6 high security vulns
 
