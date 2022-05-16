@@ -29,6 +29,17 @@ install.packages("packrat")
 > I was on a time-crunch.
 
 
+After that: clone this repo, and install npm packages needed to build
+and the R packages in `packrat/packrat.lock`...
+
+```
+$ git clone https://github.com/tonyfischetti/bow-wow
+$ npm install
+$ R
+> # (the R console should note the auto-installation of `magrittr` and `data.table`)
+> quit()
+```
+
 
 
 
@@ -37,7 +48,7 @@ install.packages("packrat")
 For this task, I chose to use the NYC Open Portal dataset about dog
 licenses.
 
-I struggled 
+I struggled
 
 
 ## how to
