@@ -14,11 +14,8 @@ options(datatable.print.keys=TRUE)
 options(datatable.na.strings="")
 
 
-require(colorout)
 library(data.table)
 library(magrittr)
-library(libbib)
-library(lubridate)
 
 # ------------------------------ #
 
@@ -44,7 +41,7 @@ dogs %<>% merge(xwalk, all.x=TRUE, by="ZipCode")
 dogs[boro=="Staten", boro:="Staten Island"]
 
 # parse the MM/DD/YYYY date into a POSIX date
-dogs[, issued_date:=mdy(LicenseIssuedDate)]
+dogs[, issued_date:=as.Date(LicenseIssuedDate, format="%m/%d/%Y")]
 dogs[, LicenseIssuedDate:=NULL]
 
 # Let's get the number of licenses issues for each year!
