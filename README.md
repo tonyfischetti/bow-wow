@@ -5,7 +5,7 @@
        alt="keith haring dog barking"
        width="200"/>
 </p>
-<span align="center">A quick demonstration of an ETL pipeline</span>
+<p align="center">A quick demonstration of an ETL pipeline</p>
 
 ---
 
