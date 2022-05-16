@@ -3,11 +3,11 @@
 <img src="https://personal.thepolygram.com/haring-dog.svg"
      alt="keith haring dog barking"
      width="200"/>
-
 A quick demonstration of an ETL pipeline
 
+---
 
-### how-to
+## how-to
 
 To run this...
 
