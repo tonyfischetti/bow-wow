@@ -1,8 +1,10 @@
 # bow-wow
 
-<img src="https://personal.thepolygram.com/haring-dog.svg"
-     alt="keith haring dog barking"
-     width="200"/>
+<p align="center">
+  <img src="https://personal.thepolygram.com/haring-dog.svg"
+       alt="keith haring dog barking"
+       width="200"/>
+</p>
 A quick demonstration of an ETL pipeline
 
 ---
