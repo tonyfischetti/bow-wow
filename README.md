@@ -10,6 +10,7 @@
 ***
 
 - [quickstart](#quickstart)
+- [just the results, please](just-the-results-please)
 - [tell me more](#tell-me-more)
 - [tech stack choice](#tech-stack-choice)
 - [limitations](#limitations)
@@ -19,6 +20,8 @@
 ## quickstart
 
 To run this, you need to have Node.js; R, and the R package `packrat`.
+
+TODO: POSIX?!
 
 Assuming you already have Node.js and R installed, installing `packrat`
 is as easy as opening R and running
@@ -56,25 +59,38 @@ $ gulp
 ```
 
 
+## just the results please
+
+Although this is meant to be completely reproducible, the `./target/`
+directory was deliberately left-out of the `.gitignore` so that you can
+view the results without having to build them from scratch.
+
+- `./target/boros-signature-breeds.csv` contains the 'most uniquely popular'
+  dog breed for each Borough of NYC
+- `./target/dog-licenses-by-year.csv` is a simple aggregation/count of the
+  number of total licenses issues each year
+
+
 ## tell me more
 
 For this task, I chose to use the NYC Open Portal dataset about dog
 licenses.
 
 I struggled for a little bit to find an interesting operation to perform
-on the data until I thought of getting each borough's "signature dog breed".
-Each borough's ~ "signature" dog breed _isn't_ (necessarily) the borough's
-most popular dog breed (after all, Yorkshire Terrier is the most popular
-breed in _all_ borough's, save for Staten Island). Instead, the spot goes
-to the breed that is the most popular compared to base-popularity of dog
+on the data until I thought of getting each borough's "signature dog breed"
+or, rather, each borough's 'most uniquely popular dog breed'.
+Each borough's "most uniquely popular" dog breed _isn't_ (necessarily) the
+borough's most popular dog breed (after all, Yorkshire Terrier is the most
+popular breed in _all_ borough's, save for Staten Island). Instead, the spot
+goes to the breed that is the most popular compared to base-popularity of dog
 breeds in all other borough's.
 
 For example, Dalmatians aren't a incredibly popular breed,
 but&mdash;assuming it were the case that 90% of NYC's Dalmatians lived in
-the Bronx&mdash;Dalmatians would be ~ "Bronx's signature breed".
+the Bronx&mdash;Dalmatians would be "Bronx's signature breed".
 
 Statistically speaking, each borough's "breed" would be the breed
-with the highest residuals in a Chi-Square test of independence
+with the highest (positive) residuals in a Chi-Square test of independence
 of proportions between that borough and all others.
 
 Anyway, I noticed that the ZipCodes in the Open data wesen't reliable, so
@@ -105,14 +121,23 @@ a viable choice for this project.
 
 The Gulpfile contains JS recipes to
 
-- clean temporary/derived files
+- clean temporary/derived files (not run by default)
 - set up the expanded directory structure
 - download the data sources (including parsing the zipcode<->boro crosswalk DOM)
 - verify that the hashes of the downloaded data match what is expected
 - run the analysis (in an R script) and place the two data products in
   the directory called `./target`.
 
-As I understand it, these are popular node libraries
+The recipes make use of the npm modules fs,
+[cheerio](https://cheerio.js.org/) for DOM parsing,
+[axios](https://axios-http.com) as an HTTP client,
+[ora-promise](https://github.com/sindresorhus/ora) for TTY animations,
+[md5](https://www.npmjs.com/package/md5) for checking the integrity of
+the remote data sources, and [shelljs](https://github.com/shelljs/shelljs)
+for the shell commands necessary to run the R script and remove temporary
+files/directories.
+
+As I understand it, these are popular node libraries.
 
 
 
