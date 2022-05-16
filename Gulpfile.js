@@ -10,7 +10,7 @@ const spinner = require("ora-promise")
 const md5 = require("md5");
 const $ = require("shelljs");
 
-// --------------------------------------------------------------- //
+/* --------------------------------------------------------------- */
 
 const DOGS = {
   "URL": "https://data.cityofnewyork.us/api/views/nu7n-tubp/rows.csv",
@@ -26,14 +26,15 @@ const XWALK = {
   "DES": "Zip <-> Borough data from nycbynatives.com"
 };
 
-// --------------------------------------------------------------- //
+/* --------------------------------------------------------------- */
 
 
-
-// --------------------------------------------------------------- //
-
-// CLEAN
-// MAKE STRUCTURE
+/* ---------------------------------------------------------------
+ *
+ * This is the target that creates the `data` and `target`
+ * directories.
+ *
+ */
 
 const setupDirs = (cb) => {
   $.mkdir("-p", "data");
@@ -44,7 +45,7 @@ const setupDirs = (cb) => {
 
 /* ---------------------------------------------------------------
  *
- * This are the targets that download the data sources
+ * These are the targets that download the data sources
  * and place them in './data'
  *
  */
@@ -86,7 +87,7 @@ const downloadZipBoroXwalk = (cb) => {
 /* ---------------------------------------------------------------
  *
  * This are the targets that download the data sources
- * and place them in './data'
+ * and place them in `./data`
  *
  */
 
@@ -101,7 +102,7 @@ const checkDogData = (cb) => {
     });
 };
 
-// TODO make dry-er
+// TODO make DRY-er
 const checkZipBoroXwalk = (cb) => {
   return fs.promises.readFile(XWALK.LOC).
     then(buf => {
@@ -113,7 +114,14 @@ const checkZipBoroXwalk = (cb) => {
     });
 };
 
-// --------------------------------------------------------------- //
+
+
+/* ---------------------------------------------------------------
+ *
+ * This are the targets that download the data sources
+ * and place them in `./data`
+ *
+ */
 
 const analyzeDogData = (cb) => {
   $.exec("Rscript ./analyze-dog-data.R");
@@ -121,16 +129,33 @@ const analyzeDogData = (cb) => {
 };
 
 
-// --------------------------------------------------------------- //
+/* ---------------------------------------------------------------
+ *
+ * Finally, this is a target that cleans the generated directories
+ * and place them in `./data`
+ *
+ * It's not in the default pipeline because I don't really
+ * know what the security ramifications are of force removing
+ * a directory.
+ *
+ */
+
+const mrproper = (cb) => {
+  $.rm("-rf", "data")
+  $.rm("-rf", "target")
+  cb();
+};
+
+/* --------------------------------------------------------------- */
 
 
+/*
+ * the "download" target doesn't have to be "series" (as opposed
+ * to "parallel") but there's a race condition in TTY output if
+ * it's not "series"
+ */
 
-
-// the "download" target doesn't have to be "series" (as opposed
-// to "parallel") but there's a race condition in TTY output if
-// it's not "series"
-
-
+exports.clean     = mrproper;
 exports.setup     = setupDirs;
 exports.download  = series(downloadDogData, downloadZipBoroXwalk);
 exports.check     = parallel(checkDogData, checkZipBoroXwalk);
