@@ -2,7 +2,7 @@
 
 A quick demonstration of an ETL pipeline
 
-![keith haring dog barking](https://personal.thepolygram.com/haring-dog.svg)
+![keith haring dog barking](https://personal.thepolygram.com/haring-dog.svg | width=200)
 
 
 6 high security vulns
