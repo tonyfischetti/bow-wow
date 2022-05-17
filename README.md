@@ -14,6 +14,7 @@
 - [tell me more](#tell-me-more)
 - [tech stack choice](#tech-stack-choice)
 - [limitations](#limitations)
+- [list of gulp tasks](#list-of-gulp-tasks)
 
 ***
 
@@ -56,6 +57,7 @@ build the whole pipeline. Just run `gulp`!
 ```
 $ gulp
 ```
+
 
 
 ## just the results please
@@ -167,4 +169,32 @@ As I understand it, these are popular node libraries.
    (a) my testing suggests it works fine, and (b) I wanted to use a tool
    more likely to be popular in Digital.
 
+
+
+## list of gulp tasks
+
+```
+Tasks for bow-wow/Gulpfile.js
+├── clean
+├── setup
+├─┬ download
+│ └─┬ <series>
+│   ├── downloadDogData
+│   └── downloadZipBoroXwalk
+├─┬ check
+│ └─┬ <parallel>
+│   ├── checkDogData
+│   └── checkZipBoroXwalk
+├── analyze
+└─┬ default
+  └─┬ <series>
+    ├── setupDirs
+    ├─┬ <series>
+    │ ├── downloadDogData
+    │ └── downloadZipBoroXwalk
+    ├─┬ <parallel>
+    │ ├── checkDogData
+    │ └── checkZipBoroXwalk
+    └── analyzeDogData
+```
 
