@@ -58,6 +58,9 @@ build the whole pipeline. Just run `gulp`!
 $ gulp
 ```
 
+[Click here](#list-of-gulp-tasks) to see a list of all Gulp tasks
+
+
 
 
 ## just the results please
