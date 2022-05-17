@@ -42,10 +42,13 @@ $ git clone https://github.com/tonyfischetti/bow-wow
 $ npm install
 
 $ # you may not want to globally install gulp-cli, but I find it useful
+$ # you may have to preface the command with `sudo`, depending on your setup
 $ npm install --global gulp-cli
 
 $ R
-> # (the R console should note the auto-installation of `magrittr` and `data.table`)
+> # The R console should note the auto-installation of `magrittr` and
+> # `data.table`. If not, run...
+> packman::restore()
 > quit()
 ```
 
