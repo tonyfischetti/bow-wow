@@ -84,7 +84,7 @@ popular breed in _all_ boroughs, save for Staten Island). Instead, the spot
 goes to the breed that is the most popular compared to base-popularity of dog
 breeds in all other borough's.
 
-For example, Dalmatians aren't a incredibly popular breed,
+For example, Dalmatians aren't an incredibly popular breed,
 but&mdash;assuming it were the case that 90% of NYC's Dalmatians lived in
 the Bronx&mdash;Dalmatians would be "Bronx's signature breed".
 
