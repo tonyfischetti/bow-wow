@@ -20,49 +20,38 @@
 
 ## quickstart
 
-To run this, you need to have Node.js; R, and the R package `packrat`. The
-host machine (probably) has to be POSIX compliant.
+There are two ways to run this ETL pipeline: either completely locally
+or through a Docker container.
 
-Assuming you already have Node.js and R installed, installing `packrat`
-is as easy as opening R and running
+To see the instructions for the former, switch to the main branch and
+re-read this section.
 
-```
-install.packages("packrat")
-```
+To run this through Docker, you should have Docker installed and be
+on a platform that can run Linux containers. I believe that MacOS and
+recent Windows versions can do this.
 
-> Aside: I this were more than a simple demo, I'd probably use Docker, but
-> I was on a time-crunch.
-
-
-After that: clone this repo, and install npm packages needed to build
-and the R packages in `packrat/packrat.lock`...
+Make sure you're in the project directory and run...
 
 ```
-$ git clone https://github.com/tonyfischetti/bow-wow
-$ npm install
-
-$ # you may not want to globally install gulp-cli, but I find it useful
-$ # you may have to preface the command with `sudo`, depending on your setup
-$ npm install --global gulp-cli
-
-$ R
-> # The R console should note the auto-installation of `magrittr` and
-> # `data.table`. If not, run...
-> packman::restore()
-> quit()
+./run-thru-docker.sh
 ```
 
-Everything is all set up now!
+(If you get a permissions error on a Unix-like OS, you may need to add your
+user to the "docker" group (`usermod -a $(whoami) -G docker` and re-login,
+or prefix all docker commands in the script with `sudo`.)
 
-The default pseudo-target in the Gulpfile contains all the steps necessary to
-build the whole pipeline. Just run `gulp`!
+This will create the `data` and `target` folders, locally; direct Docker
+to share those directories with the container, and build/run the
+containerized app.
 
-```
-$ gulp
-```
+If it is successful, both the local `data` and `target` folders should be
+populated with the raw data and data products, respectively.
 
-[Click here](#list-of-gulp-tasks) to see a list of all Gulp tasks
-
+Though the rest of the operations are quite fast, it might take 2 minutes
+to download the dog license data, and it will take a while to build the
+container. All subsequent runs should be lickety-split&mdash;especially
+because the pipeline will not re-download the data substrate if it
+already exists in `data` and the hash hasn't changed.
 
 
 
@@ -76,6 +65,7 @@ view the results without having to build them from scratch.
   dog breed for each Borough of NYC
 - `./target/dog-licenses-by-year.csv` is a simple aggregation/count of the
   number of total licenses issues each year
+
 
 
 ## tell me more
@@ -121,10 +111,9 @@ Given that this is a demo, though, I decided to use a tech stack / workflow
 that's a little closer to that of the NYPL Digital department, and with a
 particular emphasis on ease-of-reproducibility.
 
-As mentioned before, if I had more time, I'd probably use Docker to take
-care off all that stuff at the OS-level, but I decided that an approach that
-uses [gulp](https://gulpjs.com/) as a workflow automation tool is also
-a viable choice for this project.
+The core technologies in this stack are Docker (containerization solution),
+Gulp (the build tool), and R (the programming language that reads/processes
+the data and outputs the results).
 
 The Gulpfile contains JS recipes to
 
@@ -145,7 +134,6 @@ for the shell commands necessary to run the R script and remove temporary
 files/directories.
 
 As I understand it, these are popular node libraries.
-
 
 
 
