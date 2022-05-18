@@ -20,6 +20,11 @@
 
 ## quickstart
 
+> Aside: this project is now runnable through Docker. For those instructions,
+> switch to the branch "with-docker" `git checkout with-docker`. This
+> shouldn't be considered part of the assessment since it was added
+> after submission.
+
 To run this, you need to have Node.js; R, and the R package `packrat`. The
 host machine (probably) has to be POSIX compliant.
 
@@ -29,10 +34,6 @@ is as easy as opening R and running
 ```
 install.packages("packrat")
 ```
-
-> Aside: I this were more than a simple demo, I'd probably use Docker, but
-> I was on a time-crunch.
-
 
 After that: clone this repo, and install npm packages needed to build
 and the R packages in `packrat/packrat.lock`...
@@ -121,12 +122,10 @@ Given that this is a demo, though, I decided to use a tech stack / workflow
 that's a little closer to that of the NYPL Digital department, and with a
 particular emphasis on ease-of-reproducibility.
 
-As mentioned before, if I had more time, I'd probably use Docker to take
-care off all that stuff at the OS-level, but I decided that an approach that
-uses [gulp](https://gulpjs.com/) as a workflow automation tool is also
-a viable choice for this project.
+I decided that an approach that uses [gulp](https://gulpjs.com/) as a
+workflow automation tool is also a viable choice for this project.
 
-The Gulpfile contains JS recipes to
+The Gulpfile contains JS recipes to...
 
 - clean temporary/derived files (not run by default)
 - set up the expanded directory structure
